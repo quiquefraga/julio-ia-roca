@@ -5,44 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Julio IA Roca</title>
   <meta name="description" content="Inteligencia Artificial entrenada con la novela 'Soy Roca' de Félix Luna. Conversa en primera persona como Julio Argentino Roca. Proyecto académico y experimental." />
-  <meta property="og:title" content="Julio IA Roca" />
-  <meta property="og:description" content="Inteligencia Artificial entrenada con la novela 'Soy Roca', de Félix Luna. Conversa en primera persona como Julio Argentino Roca." />
-  <meta property="og:type" content="website" />
   <meta name="color-scheme" content="light dark" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🎙️%3C/text%3E%3C/svg%3E" />
   <style>
-    :root { --bg: #0b0c10; --fg: #e5e7eb; --muted:#9ca3af; --card:#111318; --brand:#4f46e5; --ok:#22c55e; --warn:#f59e0b; --err:#ef4444; }
-    html,body { height: 100%; margin: 0; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--fg); display: grid; place-items: center; }
-    .wrap { width: min(900px, 92vw); padding: 32px; padding-bottom: 180px; }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 40px 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.35); backdrop-filter: blur(6px); text-align:center; }
-    h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 12px; }
-    p { line-height: 1.5; margin: 0 0 12px; color: var(--muted); font-size: 1rem; }
-    .widget { margin-top: 32px; margin-bottom: 100px; min-height: 80px; }
-    footer { text-align:center; opacity: .7; font-size: 12px; margin-top: 10px; }
-    @media (max-width: 640px) { .wrap { padding-bottom: 220px; } }
+    :root { --bg:#0b0c10; --fg:#e5e7eb; --muted:#9ca3af; --card:#111318; }
+    html,body{height:100%;margin:0}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+      background:var(--bg) url('https://upload.wikimedia.org/wikipedia/commons/2/2a/Mapa_de_la_Republica_Argentina_%281883%29.jpg') no-repeat center center fixed;
+      background-size:cover;
+      color:var(--fg);
+      display:grid;place-items:center;
+    }
+    .overlay{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      backdrop-filter:blur(5px) brightness(0.4);
+      z-index:0;
+    }
+    .container{
+      display:flex;flex-wrap:wrap;gap:32px;position:relative;z-index:1;
+      background:rgba(17,19,24,0.85);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      padding:40px;
+      width:min(900px,92vw);
+      box-shadow:0 20px 50px rgba(0,0,0,0.35);
+      backdrop-filter:blur(10px);
+    }
+    .info{flex:1 1 340px;text-align:left;min-width:280px;}
+    .widget{flex:1 1 280px;display:flex;justify-content:center;align-items:center;min-width:260px;}
+    h1{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:12px}
+    p{line-height:1.5;color:var(--muted)}
+    footer{text-align:center;opacity:.7;font-size:12px;margin-top:20px;width:100%}
+    @media(max-width:700px){
+      .container{flex-direction:column;align-items:center;text-align:center}
+      .info{text-align:center}
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card">
+  <div class="overlay"></div>
+  <main class="container">
+    <div class="info">
       <h1>Julio IA Roca</h1>
       <p>Inteligencia Artificial entrenada con la novela <em>“Soy Roca”</em>, de Félix Luna. Conversa en primera persona como Julio Argentino Roca.</p>
-      <p>Proyecto académico y experimental. Idea: Dr. Rosendo Fraga. Diseño IA y web: Enrique A. Fraga.</p>
+      <p>Proyecto académico y experimental.<br>Idea: Dr. Rosendo Fraga.<br>Diseño IA y web: Mg. Enrique A. Fraga.</p>
+    </div>
 
-      <!-- Widget de ElevenLabs con agent-id real -->
-      <div class="widget">
-        <elevenlabs-convai agent-id="agent_2001k6wx5v8hf81s4yq23b75rcyc"></elevenlabs-convai>
-        <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-      </div>
+    <div class="widget">
+      <elevenlabs-convai agent-id="agent_2001k6wx5v8hf81s4yq23b75rcyc"></elevenlabs-convai>
+      <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    </div>
 
-      <footer>© 2025 — Proyecto Julio IA Roca</footer>
-    </section>
-    <div aria-hidden="true" style="height: 120px"></div>
+    <footer>© 2025 — Proyecto Julio IA Roca</footer>
   </main>
-
-  <noscript>
-    <p style="text-align:center; color:var(--muted);">Necesitás habilitar JavaScript para usar el asistente de voz.</p>
-  </noscript>
 </body>
 </html>
