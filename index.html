@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Julio IA Roca — Asistente de voz</title>
+  <meta name="description" content="Sitio simple para incrustar el widget de voz de ElevenLabs (ConvAI) del avatar Julio IA Roca." />
+  <meta property="og:title" content="Julio IA Roca — Asistente de voz" />
+  <meta property="og:description" content="Probá al avatar de Julio IA Roca en tu navegador, con reconocimiento de voz y TTS." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🎙️%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root { --bg: #0b0c10; --fg: #e5e7eb; --muted:#9ca3af; --card:#111318; --brand:#4f46e5; }
+    html,body { height: 100%; margin: 0; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--fg); display: grid; place-items: center; }
+    .wrap { width: min(900px, 92vw); padding: 32px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.35); backdrop-filter: blur(6px); }
+    h1 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); margin: 0 0 10px; }
+    p { line-height: 1.5; margin: 0 0 12px; color: var(--muted); }
+    .row { display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
+    .tag { font-size: 12px; color: #c7d2fe; background: rgba(79,70,229,0.15); border:1px solid rgba(79,70,229,0.35); padding: 4px 8px; border-radius: 999px; }
+    .widget { margin-top: 18px; }
+    .cta { display:flex; gap:10px; margin-top: 12px; }
+    .btn { appearance: none; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.06); color: var(--fg); padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    .btn:hover { border-color: rgba(255,255,255,0.28); }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    footer { text-align:center; opacity: .7; font-size: 12px; margin-top: 22px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="row">
+        <span class="tag">Demo</span>
+        <span class="tag">ElevenLabs ConvAI</span>
+      </div>
+      <h1>Julio IA Roca — asistente conversacional</h1>
+      <p>Hacé clic en el widget para hablar. El navegador puede pedir permiso para usar el micrófono.</p>
+
+      <!-- Reemplazá agent-id por el tuyo -->
+      <div class="widget">
+        <elevenlabs-convai agent-id="agent_2001k6wx5v8hf81s4yq23b75rcyc"></elevenlabs-convai>
+      </div>
+      <div class="cta">
+        <button id="openBtn" class="btn" type="button">Abrir / Enfocar widget</button>
+        <button id="helpBtn" class="btn" type="button">Ayuda</button>
+      </div>
+      <p class="hint" id="help" hidden>
+        Si no ves el widget, verificá que el script cargue (firewalls) y que tu navegador permita micrófono en este sitio.
+      </p>
+
+      <!-- Script del widget de ElevenLabs -->
+      <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+      <script>
+        // Pequeñas utilidades de UX
+        const helpBtn = document.getElementById('helpBtn');
+        const openBtn = document.getElementById('openBtn');
+        const help = document.getElementById('help');
+        helpBtn?.addEventListener('click', () => { help.hidden = !help.hidden; });
+        openBtn?.addEventListener('click', () => {
+          // Intenta desplazar el foco hacia el widget si ya fue definido por el script
+          const el = document.querySelector('elevenlabs-convai');
+          if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus?.(); }
+        });
+      </script>
+
+      <footer>Hecho por Enrique A. Fraga — Demo de uso de IA generativa con voz.</footer>
+    </section>
+  </main>
+
+  <noscript>
+    <p class="sr-only">Necesitás habilitar JavaScript para usar el asistente de voz.</p>
+  </noscript>
+</body>
+</html>
